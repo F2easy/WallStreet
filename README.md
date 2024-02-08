@@ -26,8 +26,15 @@ As a user, I want the ability to...
 
 # WireFrames
 
+- Home Page
+
+<img width="500" alt="Screenshot 2024-02-08 at 1 30 26 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/0434d230-e1ea-4560-a186-9b4324f1e557">
 
 
+- Show Page
+
+
+<img width="500" alt="Screenshot 2024-02-08 at 1 40 10 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/033905d8-5fa9-43db-8e83-9dc146aa97ce">
 
 
 
