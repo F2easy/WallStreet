@@ -24,21 +24,21 @@ As a user, I want the ability to...
   - Edit Portfolio Name
 
 
-## WireFrames
+# WireFrames
 
-# Home Page
+## Home Page
 
 <img width="500" alt="Screenshot 2024-02-08 at 1 30 26 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/0434d230-e1ea-4560-a186-9b4324f1e557">
 
 
-# Show Page
+## Show Page
 
 
 <img width="500" alt="Screenshot 2024-02-08 at 1 40 10 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/033905d8-5fa9-43db-8e83-9dc146aa97ce">
 
 
 
-# MyPortfolio Page
+## MyPortfolio Page
   
   
 <img width="500" alt="Screenshot 2024-02-08 at 1 55 16 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/f4e75f12-b8e8-46f6-8557-57137843feb2">
@@ -56,7 +56,7 @@ As a user, I want the ability to...
 
 
 
-# IceBox
+## IceBox
 
 - Add Charts for individual Stocks
 - Add Timeline feature where users can view performance history for both Indi stocks and Portfolio
