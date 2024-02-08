@@ -13,11 +13,11 @@
 ## User Story
 
 As a user, I want the ability to... 
-  - sign up.
-  - sign in. 
-  - sign out. 
+  - Sign up.
+  - Sign in. 
+  - Sign out. 
   - View Stocks/Businesses.
-  - read more details of individual Stocks.
+  - Read more details of individual Stocks.
   - Create a Portfolio. 
   - Add Stocks to my Portfolio. 
   - Delete Stocks from Portfolio 
