@@ -1,7 +1,7 @@
 # WallStreet
 
 <div align="middle">
-<img src="https://muralsyourway.vtexassets.com/arquivos/ids/241566/Wall-Street-Bull-NYC-Wall-Mural.jpg?v=638164476872900000" width="350px" height="400px" />
+<img src="https://muralsyourway.vtexassets.com/arquivos/ids/241566/Wall-Street-Bull-NYC-Wall-Mural.jpg?v=638164476872900000" width="450px" height="500px" />
 </div>
 
 ## OverView
