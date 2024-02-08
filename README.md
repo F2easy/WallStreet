@@ -36,6 +36,9 @@ As a user, I want the ability to...
 
 <img width="500" alt="Screenshot 2024-02-08 at 1 40 10 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/033905d8-5fa9-43db-8e83-9dc146aa97ce">
 
+- MyPortfolio Page
+  
+<img width="500" alt="Screenshot 2024-02-08 at 1 55 16 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/f4e75f12-b8e8-46f6-8557-57137843feb2">
 
 
 
