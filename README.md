@@ -8,5 +8,48 @@
 <img src="https://muralsyourway.vtexassets.com/arquivos/ids/241566/Wall-Street-Bull-NYC-Wall-Mural.jpg?v=638164476872900000" width="350px" height="400px" />
 
 
+-Technology Used -> JavaScript, MongoDB, React, Express, API
+
+## User Story
+
+As a user, I want the ability to... 
+  - sign up.
+  - sign in. 
+  - sign out. 
+  - View Stocks/Businesses.
+  - read more details of individual Stocks.
+  - Create a Portfolio. 
+  - Add Stocks to my Portfolio. 
+  - Delete Stocks from Portfolio 
+  - Edit Portfolio Name
+
+
+# WireFrames
+
+
+
+
+
+
+
+
+
+
+# ERD
+
+
+
+![Screenshot 2024-02-08 at 11 45 38 AM (2)](https://github.com/F2easy/WallStreet/assets/101888578/bebc8f8d-a3e7-4ec0-af58-766cb16e2b5b)
+
+
+
+# IceBox
+
+- Add Charts for individual Stocks
+- Add Timeline feature where users can view performance history for both Indi stocks and Portfolio
+- Add card Information to "purchase" stocks
+- Add Portfolio Value
+  
+
 
 
