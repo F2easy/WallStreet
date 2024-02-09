@@ -31,7 +31,9 @@ As a user, I want the ability to...
 
 ### Home Page
 
-<img width="500" alt="Screenshot 2024-02-08 at 1 30 26 PM" src="https://github.com/F2easy/WallStreet/assets/101888578/0434d230-e1ea-4560-a186-9b4324f1e557">
+<img width="500" alt="Screenshot 2024-02-09 at 10 45 04 AM" src="https://github.com/F2easy/WallStreet/assets/101888578/87ac93dd-7fae-4c30-83b5-02175e6b02ac">
+
+
 
 
 ### Show Page
