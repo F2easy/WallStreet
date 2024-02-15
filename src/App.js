@@ -15,6 +15,8 @@ import ChangePassword from './components/auth/ChangePassword'
 import Index from './components/Index'
 import Show from './components/Show'
 import Portfolio from './components/Portfolio'
+
+
 const App = () => {
 
   const [user, setUser] = useState(null)
@@ -49,7 +51,8 @@ const App = () => {
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route path='/stocks' element={<Index msgAlert={msgAlert} user={user} />} />
 					<Route path='/stocks/:symbol' element={<Show msgAlert={msgAlert} user={user} />} />
-					<Route path='/portfolio/:id/symbol' element={<Portfolio msgAlert={msgAlert} user={user} />} />
+					{/* <Route path='/portfolio/:id/symbol' element={<Portfolio msgAlert={msgAlert} user={user} />} /> */}
+					<Route path='/portfolio/:userId' element={<Portfolio msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'
 						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {getAllStocks, showStock} from '../api/portfolio'
 import { Button } from 'react-bootstrap';
-
+import { useParams } from 'react-router-dom';
 import { addStock, showPortfolio,  } from '../api/portfolio';
 
 
@@ -9,14 +9,16 @@ import { addStock, showPortfolio,  } from '../api/portfolio';
 
 
 
-const Portfolio = () => {
+const Portfolio = ({user}) => {
   const [portfolio, setPortfolio] = useState(null);
-
+  const {userId} = useParams()
+  console.log("userId",user._Id)
+  console.log(user)
   useEffect(() => {
     showPortfolio()
-      .then(res => {
+      .then(res => { 
         setPortfolio(res.data.portfolio);
-        console.log("stock", res.data.portfolio);
+        console.log("portfolio", res.data.portfolio);
       })
       .catch(error => {
         console.log('Error fetching portfolio:', error);

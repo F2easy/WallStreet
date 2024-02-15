@@ -43,9 +43,6 @@ const alwaysOptions = (
 		<Nav.Item className='m-2'>
 		    <Link to='/stocks' style={linkStyle}>Stocks</Link>
     </Nav.Item>
-		<Nav.Item className='m-2'>
-		    <Link to='/portfolio/:id' style={linkStyle}>MyPortfolio</Link>
-    </Nav.Item>
 	</>
 )
 
@@ -65,6 +62,9 @@ const Header = ({ user }) => (
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
+		<Nav.Item className='m-2'>
+		    <Link to={`/portfolio/${user._id}`} style={linkStyle}>MyPortfolio</Link>
+    </Nav.Item>
 		</Navbar.Collapse>
 	</Navbar>
 )

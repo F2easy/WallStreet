@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // READ --> Index
 // axios default functionality is to send a GET request
-
+// if it is anything but a GET request the rules change look at PETS
 export const getAllStocks = () => {
   return axios (`${apiUrl}/stocks`)
 }
@@ -13,25 +13,26 @@ export const showStock = (symbol) => {
   return axios (`${apiUrl}/stocks/${symbol}`)
 }
 
-// READ -> Show --> Portfolio
-export const showPortfolio = () => {
-  return axios (`${apiUrl}/portfolio/:id`)
+// READ -> Show --> Portfolio **
+export const showPortfolio = (user) => {
+  console.log("userId:", user._id)
+  return axios (`/portfolio/${user._id}`)
 }
 
-// CREATE -> Add a Portfolio
+// CREATE -> Add a Portfolio **
 export const createPortfolio = () => {
   return axios (`${apiUrl}/portfolio`) // would i even need Axios for this ??
  }
-// UPDATE -> adjust/edit a Portfolio
+// UPDATE -> adjust/edit a Portfolio **
 
-// DELETE --> Delete Portfolio
+// DELETE --> Delete Portfolio **
 
-// ADD --> add stocks to StockList Array
+// ADD --> add stocks to StockList Array **
 export const addStock = ({userId,data}) => {
   console.log("userID: ",userId)
   return axios.patch(`/portfolio/${userId}`,data)
 }
-// DELETE --> Remove Stocks from StockList array
+// DELETE --> Remove Stocks from StockList array **
 
 export const removeStock = () => {
   return axios (`${apiUrl} ....`)

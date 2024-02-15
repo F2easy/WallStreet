@@ -10,6 +10,8 @@ const Show = ({ user }) => {
   const {symbol} = useParams()
   //console.log('user',user._id)
   console.log(symbol)
+  console.log("this is the user", user)
+  console.log("this is user_id", user._id)
 
 
   useEffect(() => {
