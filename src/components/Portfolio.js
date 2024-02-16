@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import {getAllStocks, showStock} from '../api/portfolio'
+import {getAllStocks, removeStock, showStock} from '../api/portfolio'
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { addStock, showPortfolio,  } from '../api/portfolio';
-
+import React from 'react';
 
 
 
@@ -12,10 +12,10 @@ import { addStock, showPortfolio,  } from '../api/portfolio';
 const Portfolio = ({user}) => {
   const [portfolio, setPortfolio] = useState(null);
   const {userId} = useParams()
-  console.log("userId",user._Id)
+  console.log("userId",user._id)
   console.log(user)
   useEffect(() => {
-    showPortfolio()
+    showPortfolio(userId)
       .then(res => { 
         setPortfolio(res.data.portfolio);
         console.log("portfolio", res.data.portfolio);
@@ -31,31 +31,40 @@ const Portfolio = ({user}) => {
 
   return (
     <>
-      <h2>Stock Details</h2>
-      {portfolio ? (
-        <div>
-          <p>name {portfolio.name}</p>
-          <p>Portfolio: {portfolio.stockList}</p>
-         
+    <h2>Portfolio Details</h2>
+    
+    {portfolio ? (
+      <div>
+        <h3>Stocks in Your Portfolio</h3>
         
-          {(
-            <Button
-              className='m-2'
-              variant='success'
-              onClick={addStock}
-            >
-              Purchase Stock
-            </Button>
-          )}
-        </div>
-      ) : (
-        <p>Loading stock details...</p>
-      )}
-    </>
-  );
-};
+        {portfolio ? (
+          <div>
+            <p>name: {portfolio.name}</p>
+            {portfolio.stockList.map((stock, stockIndex) => (
+              <div key={stockIndex}>
+                <p>Ticker: {stock.ticker}</p>
+                <p>Country: {stock.country}</p>
+                {/* Render other properties of the stock object as needed */}
+                <Button
+                  className="m-2"
+                  variant="success"
+                  onClick={() => removeStock(stock._id,user, portfolio._id)}
+                >
+                  Delete Stock
+                </Button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>Loading portfolio...</p>
+        )}
+      </div>
+    ) : (
+      <p>Loading stock details...</p>
+    )}
+  </>
 
-
+  )}
 
 
 

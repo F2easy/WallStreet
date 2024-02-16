@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { addStock } from '../api/portfolio';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 const Show = ({ user }) => {
   const [stock, setStock] = useState(null);
@@ -11,7 +12,7 @@ const Show = ({ user }) => {
   //console.log('user',user._id)
   console.log(symbol)
   console.log("this is the user", user)
-  console.log("this is user_id", user._id)
+
 
 
   useEffect(() => {
@@ -28,7 +29,8 @@ const Show = ({ user }) => {
 
     const handleClick = () => {
       console.log('user',user._id)
-      return axios.patch(`/portfolio/${user._id}`,stock)
+      console.log('stock:', stock)
+      return axios.patch(`${apiUrl}/portfolio/${user._id}`,stock)
     }
 
 

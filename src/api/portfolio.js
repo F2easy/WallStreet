@@ -14,9 +14,9 @@ export const showStock = (symbol) => {
 }
 
 // READ -> Show --> Portfolio **
-export const showPortfolio = (user) => {
-  console.log("userId:", user._id)
-  return axios (`/portfolio/${user._id}`)
+export const showPortfolio = (id) => {
+  // console.log("user:", user)
+  return axios (`${apiUrl}/portfolio/${id}`)
 }
 
 // CREATE -> Add a Portfolio **
@@ -27,13 +27,20 @@ export const createPortfolio = () => {
 
 // DELETE --> Delete Portfolio **
 
-// ADD --> add stocks to StockList Array **
+// ADD --> add stocks to StockList Array 
 export const addStock = ({userId,data}) => {
   console.log("userID: ",userId)
   return axios.patch(`/portfolio/${userId}`,data)
 }
 // DELETE --> Remove Stocks from StockList array **
 
-export const removeStock = () => {
-  return axios (`${apiUrl} ....`)
+export const removeStock = (stockId,user,portId) => {
+  console.log(stockId,user,portId)
+  return axios ({
+      url: `${apiUrl}/portfolio/${stockId}/${portId}`,
+      method: 'DELETE',
+      headers: {
+          Authorization: `Token token=${user.token}`
+      }
+  })
 }
