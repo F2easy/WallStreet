@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
 import {getAllStocks, showStock} from '../api/portfolio'
-import { Button } from 'react-bootstrap';
-import { addStock } from '../api/portfolio';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import apiUrl from '../apiConfig'
+import { Card, Button } from 'react-bootstrap';
 
 const Show = ({ user }) => {
   const [stock, setStock] = useState(null);
-  const {symbol} = useParams()
-  //console.log('user',user._id)
-  console.log(symbol)
-  console.log("this is the user", user)
-
-
+  const { symbol } = useParams();
 
   useEffect(() => {
     showStock(symbol)
@@ -26,46 +21,46 @@ const Show = ({ user }) => {
       });
   }, [symbol]);
 
-
-    const handleClick = () => {
-      console.log('user',user._id)
-      console.log('stock:', stock)
-      return axios.patch(`${apiUrl}/portfolio/${user._id}`,stock)
-    }
-
+  const handleClick = () => {
+    console.log('user', user._id);
+    console.log('stock:', stock);
+    return axios.patch(`${apiUrl}/portfolio/${user._id}`, stock);
+  };
 
   return (
     <>
       <h2>Stock Details</h2>
       {stock ? (
-        <div>
-            {stock.logo && (
-            <a href={stock.website} target="_blank" rel="noopener noreferrer">
-              <img src={stock.logo} alt="Company Logo" />
-            </a>
+        <Card>
+          {stock.logo && (
+            <Card.Img
+              variant="top"
+              src={stock.logo}
+              alt="Company Logo"
+              style={{ width: '150px', height: 'auto' }}
+            />
           )}
-          <p>Description: {stock.ticker}</p>
-          <p>Symbol: {stock.currency}</p>
-          <p>Currency: {stock.ipo}</p>
-          <p>Type: {stock.name}</p>
-        
-          {(
+          <Card.Body>
+            <Card.Title>{stock.ticker}</Card.Title>
+            <Card.Text>Currency: {stock.currency}</Card.Text>
+            <Card.Text>Type: {stock.name}</Card.Text>
+            <Card.Text>Industry: {stock.industry}</Card.Text>
+            <Card.Text>IPO date: {stock.ipo}</Card.Text>
             <Button
-              className='m-2'
-              variant='success'
-               onClick= {handleClick}
+              className="m-2"
+              variant="success"
+              onClick={handleClick}
             >
               Purchase Stock
             </Button>
-          )}
-        </div>
+          </Card.Body>
+        </Card>
       ) : (
         <p>Loading stock details...</p>
       )}
     </>
   );
 };
-
 
 
 

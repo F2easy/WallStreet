@@ -32,7 +32,7 @@ export const addStock = ({userId,data}) => {
   console.log("userID: ",userId)
   return axios.patch(`/portfolio/${userId}`,data)
 }
-// DELETE --> Remove Stocks from StockList array **
+// DELETE --> Remove Stocks from StockList array 
 
 export const removeStock = (stockId,user,portId) => {
   console.log(stockId,user,portId)

@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import {getAllStocks} from "../api/portfolio"
+import React from 'react';
+
 
 const Home = (props) => {
 	 const { msgAlert, user } = props
