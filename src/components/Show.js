@@ -42,10 +42,12 @@ const Show = ({ user }) => {
           )}
           <Card.Body>
             <Card.Title>{stock.ticker}</Card.Title>
+            <Card.Text>Company Name: {stock.name}</Card.Text>
             <Card.Text>Currency: {stock.currency}</Card.Text>
-            <Card.Text>Type: {stock.name}</Card.Text>
+            <Card.Text>Country: {stock.country}</Card.Text>
             <Card.Text>Industry: {stock.industry}</Card.Text>
             <Card.Text>IPO date: {stock.ipo}</Card.Text>
+            <Card.Text>Exchange: {stock.exchange}</Card.Text>
             <Button
               className="m-2"
               variant="success"

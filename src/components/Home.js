@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {getAllStocks} from "../api/portfolio"
 import React from 'react';
-
+import { Card, Button } from 'react-bootstrap';
 
 const Home = (props) => {
 	 const { msgAlert, user } = props
