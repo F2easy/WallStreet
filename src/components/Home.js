@@ -1,30 +1,53 @@
 import {useState, useEffect} from 'react'
 import {getAllStocks} from "../api/portfolio"
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Accordion } from 'react-bootstrap';
+import axios from 'axios';
 
-const Home = (props) => {
-	 const { msgAlert, user } = props
-	// console.log('props in home', props)
+const Home = () => {
+  const [news, setNews] = useState(null);
 
-	const [stocks, setStocks] = useState(null)
-  
-	// useEffect is an effect hook and it requires 2 args
-	// first arg is a callback function and 2nd arg is a dependecy array
-	// the depedencay array tells react when to run an effect hok.
-	// if we want this to run only on the first render and anytime the page refreshes, 
-	// we keep the dependancy array empty
-	useEffect(() => {
-		getAllStocks()
-		.then()
-		.catch( error => console.log('stocks: \n', stocks))
-	}, []) // by keeping the array empty you are calling function 1X per render
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/home');
+        setNews(response.data.news);
+      } catch (error) {
+        console.log('Error fetching news:', error);
+      }
+    };
 
-	return (
-		<>
-			<h2>Home Page</h2>
-		</>
-	)
-}
+    fetchData();
+  }, []);
 
-export default Home
+  return (
+    <>
+      <h1>Home Page</h1>
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: '1' }}>
+          {/* Content on the left side (if any) */}
+        </div>
+        <div style={{ flex: '1' }}>
+          <h2>News</h2>
+          {news ? (
+            <Card>
+              <Card.Img variant="top" src={news.imageGen} />
+              <Card.Body>
+                <Card.Title>{news.headlineGen}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Source: {news.sourceGen}
+                </Card.Subtitle>
+                <Card.Text>{news.summaryGen}</Card.Text>
+                <Card.Link href={news.urlGen}>Read More</Card.Link>
+              </Card.Body>
+            </Card>
+          ) : (
+            <p>Loading news...</p>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Home;
