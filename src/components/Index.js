@@ -31,7 +31,7 @@ const Index = () => {
                   {stock.symbol}
                 </Link>
                 <div className="card-info">
-                  <p>Description: {stock.description}</p>
+                  <p>Company Name: {stock.description}</p>
                   <p>Currency: {stock.currency}</p>
                   <p>Type: {stock.type}</p>
                 </div>

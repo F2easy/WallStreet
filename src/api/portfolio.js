@@ -44,3 +44,9 @@ export const removeStock = (stockId,user,portId) => {
       }
   })
 }
+
+// READ -> Home --> news
+
+export const showNews = () => {
+  return axios (`${apiUrl}/`)
+}
