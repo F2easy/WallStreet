@@ -3,6 +3,8 @@ import {getAllStocks, showNews} from "../api/portfolio"
 import React from 'react';
 import { Card, Button, Accordion } from 'react-bootstrap';
 import axios from 'axios';
+import Portfolio from './Portfolio';
+
 
 const Home = () => {
   const [news, setNews] = useState(null);
@@ -22,7 +24,7 @@ const Home = () => {
   return (
     <>
       <h1>WallStreet</h1>
-      <body> Welcome to Wallstreet ! Login or Create an account to get access to more features in this app</body>
+      <body> Welcome to Wallstreet ! </body>
       <div style={{ display: 'flex' }}>
         <div style={{ flex: '1' }}>
           {/* Content on the left side (if any) */}

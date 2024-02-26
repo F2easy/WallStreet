@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllStocks } from '../api/portfolio';
-import { Tabs, Tab } from 'react-bootstrap';
-
+import { Tabs, Tab, } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form' ;
+import InputGroup from 'react-bootstrap/InputGroup' ;
 
 
 const Index = () => {
   const [stocks, setStocks] = useState(null);
-
+  const [search, setSearch] = useState('');
+  console.log(search)
   useEffect(() => {
     getAllStocks()
       .then(res => {
@@ -22,10 +24,19 @@ const Index = () => {
   return (
     <>
     <h2>Stocks</h2>
-      <div className="stock-cards">
+    <Form> 
+      <InputGroup className="myBar" >
+        <Form.Control
+          onChange={(e) => setSearch(e.target.value)}placeholder='Search Stocks' />
+      </InputGroup>
+    </Form>
+    <></>
+    <div className="stock-cards">
         {stocks ? (
           <div className="card-list">
-            {stocks.map(stock => (
+            {stocks.filter((stock) => {
+              return search.toLowerCase() === '' ? stock : stock.description.toLowerCase().includes(search)
+            }).map((stock) => (
               <div key={stock.symbol} className="card">
                 <Link to={`/stocks/${stock.symbol}`} className="card-name">
                   {stock.symbol}

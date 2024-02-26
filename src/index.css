@@ -12,3 +12,21 @@ code {
     monospace;
 }
 
+.card {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  flex-basis: calc(15% - 1rem); /* Adjust this as needed */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-basis: calc(50% - 1rem); /* Adjust this as needed */
+  }
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
