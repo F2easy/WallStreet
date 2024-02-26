@@ -1,5 +1,5 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect} from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -22,10 +22,25 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
+	useEffect(() => {
+		// access localStorage
+		const loggedInUser = localStorage.getItem('user')
+
+		if (loggedInUser){
+			// we need to parse json string
+			const foundUser = JSON.parse(loggedInUser)
+			// then set that saved user in state
+			setUser(foundUser)
+		}
+	}, [])
+
   console.log('user in app', user)
   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
+		// to clear the usr saved in local storage
+		localStorage.removeItem('user')
+		// to clear user once logged out
     setUser(null)
   }
 

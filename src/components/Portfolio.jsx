@@ -42,13 +42,15 @@ const Portfolio = ({user}) => {
             <p>name: {portfolio.name}</p>
             {portfolio.stockList.map((stock, stockIndex) => (
               <div key={stockIndex}>
-                <p>Country: {stock.image}</p>
+                <img src={stock.logo} alt="Stock Logo" />
                 <p>Ticker: {stock.ticker}</p>
                 <p>Country: {stock.country}</p>
                 <Button
                   className="m-2"
                   variant="dark"
-                  onClick={() => removeStock(stock._id,user, portfolio._id)}
+                  onClick={() => {removeStock(stock._id,user, portfolio._id)
+             
+                  }}
                 >
                   Delete Stock
                 </Button>
