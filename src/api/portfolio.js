@@ -22,8 +22,25 @@ export const showPortfolio = (id) => {
 // CREATE -> Add a Portfolio **
 export const createPortfolio = () => {
   return axios (`${apiUrl}/portfolio`) // would i even need Axios for this ??
- }
+}
+
 // UPDATE -> adjust/edit a Portfolio **
+ export const editPortfolio = (id,data,newName) => {
+  console.log("id",id)
+  console.log("data",data)
+  console.log("portId",id._id)
+  return axios ({
+    url: `${apiUrl}/myportfolio/${data}`,
+    method: 'PATCH',
+    headers: {
+        Authorization: `Token token=${id.token}`
+    },
+    data: {
+      portName: newName,
+    }
+  })
+}
+
 
 // DELETE --> Delete Portfolio **
 

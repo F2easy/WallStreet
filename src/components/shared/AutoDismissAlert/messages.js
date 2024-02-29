@@ -6,6 +6,15 @@ const messages = {
 	signOutSuccess: 'Come back soon!',
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
+	updatedPortfolioSuccess: 'Portfolio name changed successfully!',
+	updatedPortfolioFailure: 'Portfolio name changed failed.',
+	stockPurchasedSuccess: 'Stock Purchased successfully! ',
+	updatedPortfolioFailure: 'Stock Purchase Failed.',
+	portfolioCreatedSuccess: 'Portfolio Created scuccessfully! ',
+	portfolioCreatedfailure: 'Portfolio Created scuccessfully! ',
+
+
+
 }
 
 module.exports = messages

@@ -24,18 +24,20 @@ const Index = () => {
   return (
     <>
     <h2>Stocks</h2>
+    <div className='search'>
     <Form> 
       <InputGroup className="myBar" >
         <Form.Control
           onChange={(e) => setSearch(e.target.value)}placeholder='Search Stocks' />
       </InputGroup>
     </Form>
+    </div>
     <></>
     <div className="stock-cards">
         {stocks ? (
           <div className="card-list">
             {stocks.filter((stock) => {
-              return search.toLowerCase() === '' ? stock : stock.description.toLowerCase().includes(search)
+              return search.trim() === '' ? stock : stock.description.toLowerCase().includes(search.toLowerCase())
             }).map((stock) => (
               <div key={stock.symbol} className="card">
                 <Link to={`/stocks/${stock.symbol}`} className="card-name">
