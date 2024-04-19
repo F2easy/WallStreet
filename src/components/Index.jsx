@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllStocks } from '../api/portfolio';
-import { Tabs, Tab, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form' ;
 import InputGroup from 'react-bootstrap/InputGroup' ;
 
@@ -23,7 +22,8 @@ const Index = () => {
 
   return (
     <>
-    <h2>Stocks</h2>
+    <div className='Back-Ground' style={{ backgroundColor: '#4a4a4a'}}>
+    <h2 className='title-Index'>Stock-List</h2>
     <div className='search'>
     <Form> 
       <InputGroup className="myBar" >
@@ -35,11 +35,11 @@ const Index = () => {
     <></>
     <div className="stock-cards">
         {stocks ? (
-          <div className="card-list">
+          <div className="card-list" style={{ backgroundColor: '#4a4a4a'}}>
             {stocks.filter((stock) => {
               return search.trim() === '' ? stock : stock.description.toLowerCase().includes(search.toLowerCase())
             }).map((stock) => (
-              <div key={stock.symbol} className="card">
+              <div key={stock.symbol} className="card" style={{ backgroundColor: '#DEDEDE'}}>
                 <Link to={`/stocks/${stock.symbol}`} className="card-name">
                   {stock.symbol}
                 </Link>
@@ -54,6 +54,7 @@ const Index = () => {
         ) : (
           <p>Loading all Stocks...</p>
         )}
+      </div>
       </div>
     </>
   );

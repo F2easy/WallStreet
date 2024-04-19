@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
-import {editPortfolio, getAllStocks, removeStock, showPortfolio, showStock} from '../api/portfolio'
+import React, { useState, useEffect } from 'react';
+import {editPortfolio,  removeStock, showPortfolio, showStock} from '../api/portfolio'
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import React from 'react';
-import messages from './shared/AutoDismissAlert/messages';
-
+import { Axios } from 'axios';
 
 
 
@@ -27,68 +25,76 @@ const Portfolio = ({user}) => {
   }, []);
 
   const handleEditPortfolio = () => {
-    console.log("user", user);
+    
+    console.log("user._Id", user);
     console.log("portfolioId", portfolio._id);
     console.log("newName", newName);
-    editPortfolio(user, portfolio._id, { portName: newName })
-      .then(() => {
-        // Update the local state with the new name
-        setPortfolio({ ...portfolio, portName: newName });
-        // Reset the input field
-        setNewName('');
-        // Handle successful update, e.g., show a success message
-        
-				msgAlert({
-					heading: 'Portfolio Update Success',
-					message: messages.updatedPortfolioSuccess,
-					variant: 'success',
-				})
-
+    editPortfolio(user, portfolio._id,newName)
+      .then((e) => {
+        console.log("this is e", e)
+              // Update the local state with the new name
+    //  const updatedPortfolio = { ...portfolio, portName: newName };
+      setPortfolio(prevPortfolio => ({ ...prevPortfolio, portName: newName}));
+      // Reset the input field
+     // setNewName('');
+      console.log('portfolio ID is', portfolio._id);
+   
+         setPortfolio({ ...portfolio, portName: newName });
+      
         console.log('Portfolio name updated successfully!');
+      
       })
       .catch((error) => {
         // Handle error, e.g., show an error message
         console.error('Failed to update portfolio name:', error);
       });
   };
-
+  const handleRemoveStock = () => {
+  
+    removeStock(user._id,stockId,portfolio._id)
+    .then((e) =>{
+      console.log(e)
+    })
+  }
 
 
 
   return (
     <>
-    <h2>Portfolio Details</h2>
+    
+    <h2 align='center' > Stocks in Your Portfolio</h2>
     
     {portfolio ? (
-      <div>
-        <h3>Stocks in Your Portfolio</h3>
+      
+      <div className='portfolio-container'>
+        
         <div>
         <p>name: {portfolio.portName}</p>
         <input type="text" 
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
-        />
-        <Button
+        /> 
+         <Button
             className="m-2"
             variant="dark"
-            onClick={() => {editPortfolio(user, portfolio._id)}}
+            
+            onClick={handleEditPortfolio}
           >
             Change Portfolio Name
           </Button>
 
-        </div>
+        </div >
         {portfolio ? (
-          <div>
-            <p>name: {portfolio.name}</p>
+          <div className='portfolio-container'>
             {portfolio.stockList.map((stock, stockIndex) => (
               <div key={stockIndex}>
-                <img src={stock.logo} alt="Stock Logo" />
+                <img src={stock.logo} alt = "" className="Stock-Logo" />
                 <p>Ticker: {stock.ticker}</p>
                 <p>Country: {stock.country}</p>
                 <Button
                   className="m-2"
                   variant="dark"
-                  onClick ={handleEditPortfolio}
+                  onClick ={removeStock}
                 >
                   Delete Stock
                 </Button>
@@ -96,10 +102,13 @@ const Portfolio = ({user}) => {
               </div>
             ))}
           </div>
+          
         ) : (
           <p>Loading portfolio...</p>
         )}
+        
       </div>
+      
     ) : (
       <p>Loading stock details...</p>
     )}

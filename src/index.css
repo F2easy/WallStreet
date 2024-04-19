@@ -12,16 +12,52 @@ code {
     monospace;
 }
 
+.title-Index{
+  text-align: center ;
+  align-content: 10px;
+  color: white;
+}
+
+.card-list{
+  background-color: #4a4a4a;
+}
+
+.stock-cards{
+
+  margin-left: 3%;
+  margin-right: -7% ;
+}
+
 .card {
-  background-color: #f0f0f0;
+
   padding: 1rem;
   flex-basis: calc(15% - 1rem); /* Adjust this as needed */
   box-sizing: border-box;
 }
 
+.Stock-Logo {
+  width: 7%;
+}
+
+.stock-info{
+  margin-right: 25%;
+}
+
+.company-news{
+  align-items: right;
+  align-content: right;
+  margin-left: ;
+  
+}
+
+.prices{
+  margin-top: 100%;
+  
+}
+
 @media (max-width: 768px) {
   .card {
-    flex-basis: calc(50% - 1rem); /* Adjust this as needed */
+    flex-basis: calc(25% - 1rem); /* Adjust this as needed */
   }
 }
 
@@ -34,6 +70,15 @@ code {
 .search {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.portfolio-container {
+  background-color: #4a4a4a;
+  min-height: '100vh';
+}
+
+.home-body{
+  background-color: #4a4a4a;
 }
 
 @media (max-width: 768px) {

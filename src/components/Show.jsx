@@ -14,7 +14,6 @@ const Show = ({ user }) => {
     showStock(symbol)
       .then(res => {
         setStock(res.data.stock);
-        console.log("rizz", res);
       })
       .catch(error => {
         console.log('Error fetching stock:', error);
@@ -31,15 +30,32 @@ const Show = ({ user }) => {
     <>
       <h2>Stock Details</h2>
       {stock ? (
+        
         <Row>
+           <Col md={3}>
+            <Card className='prices'>
+              <Card.Body>
+                <Card.Title>Financial</Card.Title>
+                <Card.Text>Current Price Per Share: ${stock.currentPrice}</Card.Text>
+                <Card.Text>Daily Low Price: ${stock.lowPrice}</Card.Text>
+                <Card.Text>Daily High Price: ${stock.highPrice}</Card.Text>
+                <Card.Text>Change: ${stock.change}</Card.Text>
+                <Card.Text>Percent Change: {stock.percentChange}%</Card.Text>
+                <Card.Text>Open Price: ${stock.openPrice}</Card.Text>
+                <Card.Text> Previous close Price: ${stock.prevClose}</Card.Text>
+                
+              </Card.Body>
+            </Card>
+          </Col>
           <Col md={6}>
-            <Card>
+            
+            <Card className='stock-info'>
               {stock.logo && (
                 <Card.Img
                   variant="top"
                   src={stock.logo}
                   alt="Company Logo"
-                  style={{ width: '150px', height: 'auto' }}
+                  style={{ width: '150px', height: '150px' }}
                 />
               )}
               <Card.Body>
@@ -54,44 +70,33 @@ const Show = ({ user }) => {
                   className="m-2"
                   variant="success"
                   onClick={handleClick}
+                  
                 >
                   Purchase Stock
                 </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col md={3}>
-            <Card>
+          <Card className='company-news'>
             <Card.Title>Company News</Card.Title>
             {stock.logo && (
                 <Card.Img
                   variant="top"
                   src={stock.newsImage}
                   alt="News Logo"
-                  style={{ width: '150px', height: 'auto' }}
+                  style={{ width: 'auto', height: 'auto' }}
                 />
               )}
+              <Col md={10}>
               <Card.Body>
                 <Card.Text>{stock.companyNews}</Card.Text>
                 <Card.Text>{stock.summary}</Card.Text>
                 <Card.Text>News Source: {stock.source}</Card.Text>
-                
               </Card.Body>
+              </Col>
             </Card>
-            <Card>
-              <Card.Body>
-                <Card.Title>Financial</Card.Title>
-                <Card.Text>Current Price: ${stock.currentPrice}</Card.Text>
-                <Card.Text>Low Price: ${stock.lowPrice}</Card.Text>
-                <Card.Text>High Price: ${stock.highPrice}</Card.Text>
-                <Card.Text>Change: ${stock.change}</Card.Text>
-                <Card.Text>Percent Change: {stock.percentChange}%</Card.Text>
-                <Card.Text>Open Price: ${stock.openPrice}</Card.Text>
-                <Card.Text> Previous close Price: ${stock.prevClose}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
         </Row>
+        
       ) : (
         <p>Loading stock details...</p>
       )}

@@ -6,6 +6,11 @@ const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
+
+const NavStyle = {
+	color: 'green',
+	textDecoration: 'none'
+}
 const authenticatedOptions = (
 	<>
 		<Nav.Item className='m-2'>
@@ -48,7 +53,7 @@ const alwaysOptions = (
 
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='secondary' variant='dark' expand='md'>
 		<Navbar.Brand>
 			<Link to='/' style={linkStyle}>
 				WallStreet
