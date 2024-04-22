@@ -38,26 +38,44 @@ code {
 .Stock-Logo {
   width: 7%;
 }
-
-.stock-info{
-  margin-right: 25%;
+.prices {
+  margin-top: 5%;
+  margin-right: 5%;
 }
 
-.company-news{
-  align-items: right;
-  align-content: right;
-  margin-left: ;
-  
+.stock-info {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-.prices{
-  margin-top: 100%;
-  
+.company-news {
+  margin: 5% 2.5%;
+  flex-basis: 100%;
 }
+
+.company-news .card-title {
+  margin-bottom: 2%;
+}
+
+.company-news .card-img-top {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+
+
+/* @media (max-width: 768px) {
+  .stock-info {
+    margin-left: 0;
+    margin-right: 0;
+  }
+} */
 
 @media (max-width: 768px) {
-  .card {
-    flex-basis: calc(25% - 1rem); /* Adjust this as needed */
+  .prices,
+  .stock-info,
+  .company-news {
+    margin: auto;
   }
 }
 

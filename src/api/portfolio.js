@@ -54,7 +54,7 @@ export const addStock = ({userId,data}) => {
 // DELETE --> Remove Stocks from StockList array 
 export const removeStock = (user,stockId,portId) => {
   console.log("this is user",user)
-  console.log("this is stockId",stockId)
+  // console.log("this is stockId",stockId)
   console.log("this is portId",portId)
   return axios ({
       url: `${apiUrl}/portfolio/${stockId}/${portId}`,
