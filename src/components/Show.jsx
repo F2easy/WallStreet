@@ -50,7 +50,7 @@ const Show = ({ user }) => {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             
             <Card className='stock-info'>
               {stock.logo && (
@@ -58,7 +58,7 @@ const Show = ({ user }) => {
                   variant="top"
                   src={stock.logo}
                   alt="Company Logo"
-                  style={{ width: '150px', height: '150px' }}
+                  // style={{ width: '150px', height: '150px' }}
                 />
               )}
               <Card.Body>
@@ -80,7 +80,7 @@ const Show = ({ user }) => {
               </Card.Body>
             </Card>
           </Col>
-          <Card className='company-news'>
+          <Card className='company-news'> 
             <Card.Title>Company News</Card.Title>
             {stock.logo && (
                 <Card.Img
@@ -90,7 +90,7 @@ const Show = ({ user }) => {
                   style={{ width: '25%', height: '25%' }}
                 />
               )}
-              <Col md={10}>
+              <Col md={3}>
               <Card.Body>
                 <Card.Text>{stock.companyNews}</Card.Text>
                 <Card.Text>{stock.summary}</Card.Text>

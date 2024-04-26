@@ -3,6 +3,7 @@ import {editPortfolio,  removeStock, showPortfolio, showStock} from '../api/port
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
  import  axios  from 'axios';
+ import  axios  from 'axios';
 
 
 
@@ -26,6 +27,9 @@ const Portfolio = ({user}) => {
 
   const handleEditPortfolio = () => {
     
+    // console.log("user._Id", user);
+    // console.log("portfolioId", portfolio._id);
+    // console.log("newName", newName);
     // console.log("user._Id", user);
     // console.log("portfolioId", portfolio._id);
     // console.log("newName", newName);
