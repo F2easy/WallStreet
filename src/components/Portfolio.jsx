@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {editPortfolio,  removeStock, showPortfolio, showStock} from '../api/portfolio'
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { Axios } from 'axios';
+ import  axios  from 'axios';
 
 
 
@@ -26,9 +26,9 @@ const Portfolio = ({user}) => {
 
   const handleEditPortfolio = () => {
     
-    console.log("user._Id", user);
-    console.log("portfolioId", portfolio._id);
-    console.log("newName", newName);
+    // console.log("user._Id", user);
+    // console.log("portfolioId", portfolio._id);
+    // console.log("newName", newName);
     editPortfolio(user, portfolio._id,newName)
       .then((e) => {
         console.log("this is e", e)
@@ -49,12 +49,12 @@ const Portfolio = ({user}) => {
         console.error('Failed to update portfolio name:', error);
       });
   };
-  const handleRemoveStock = () => {
+
+  const handleRemoveStock = (stock) => {
+
+    removeStock(user,stock._id,portfolio._id)
+    
   
-    removeStock(user._id,stockId,portfolio._id)
-    .then((e) =>{
-      console.log(e)
-    })
   }
 
 
@@ -69,7 +69,7 @@ const Portfolio = ({user}) => {
       <div className='portfolio-container'>
         
         <div>
-        <p>name: {portfolio.portName}</p>
+        <p>Portfolio Name: {portfolio.portName}</p>
         <input type="text" 
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
@@ -93,8 +93,8 @@ const Portfolio = ({user}) => {
                 <p>Country: {stock.country}</p>
                 <Button
                   className="m-2"
-                  variant="dark"
-                  onClick ={removeStock}
+                  variant="danger"
+                  onClick ={() => {handleRemoveStock(stock)}}
                 >
                   Delete Stock
                 </Button>

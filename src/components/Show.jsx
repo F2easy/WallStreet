@@ -32,6 +32,9 @@ const Show = ({ user }) => {
       {stock ? (
         
         <Row>
+          <div>
+
+          </div>
            <Col md={3}>
             <Card className='prices'>
               <Card.Body>
@@ -84,7 +87,7 @@ const Show = ({ user }) => {
                   variant="top"
                   src={stock.newsImage}
                   alt="News Logo"
-                  style={{ width: 'auto', height: 'auto' }}
+                  style={{ width: '25%', height: '25%' }}
                 />
               )}
               <Col md={10}>

@@ -18,46 +18,71 @@ code {
   color: white;
 }
 
-.card-list{
+
+.card-list {
   background-color: #4a4a4a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.stock-cards{
-
-  margin-left: 3%;
-  margin-right: -7% ;
+.stock-cards {
+  margin: 0 2.5%;
 }
 
 .card {
-
   padding: 1rem;
-  flex-basis: calc(15% - 1rem); /* Adjust this as needed */
+  flex-basis: calc(50% - 1rem); /* Adjust this as needed */
   box-sizing: border-box;
 }
+
+@media (min-width: 768px) {
+  .card {
+    flex-basis: calc(25% - 1.5rem); /* Adjust this as needed */
+  }
+}
+
 
 .Stock-Logo {
   width: 7%;
 }
 
-.stock-info{
-  margin-right: 25%;
+.prices {
+  margin-top: 45%;
+  margin-left: auto;
+  margin-right: 0;
+  order: 2;
 }
 
-.company-news{
-  align-items: right;
-  align-content: right;
-  margin-left: ;
-  
+.stock-info {
+  margin-left: auto;
+  margin-right: 0;
+  order: 1;
+  flex-grow: 1;
 }
 
-.prices{
-  margin-top: 100%;
-  
+.company-news {
+  margin: 5% 2.5%;
+  flex-basis: 100%;
 }
 
-@media (max-width: 768px) {
-  .card {
-    flex-basis: calc(25% - 1rem); /* Adjust this as needed */
+.company-news .card-title {
+  margin-bottom: 2%;
+}
+
+.company-news .card-img-top {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .prices,
+  .stock-info {
+    margin: auto;
+    order: unset;
+    flex-grow: unset;
   }
 }
 
@@ -66,14 +91,13 @@ code {
   flex-wrap: wrap;
   gap: 1rem;
 }
-
 .search {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
 .portfolio-container {
-  background-color: #4a4a4a;
+  background-color: whitesmoke;
   min-height: '100vh';
 }
 
