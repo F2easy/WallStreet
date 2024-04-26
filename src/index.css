@@ -12,14 +12,16 @@ code {
     monospace;
 }
 
-.title-Index{
+
+
+ /* Index Page */
+
+ .title-Index {
   text-align: center ;
   align-content: 10px;
-  color: white;
+  color: whitesmoke;
 }
-
-
-.card-list {
+ .card-list {
   background-color: #4a4a4a;
   display: flex;
   flex-wrap: wrap;
@@ -33,15 +35,28 @@ code {
 
 .card {
   padding: 1rem;
-  flex-basis: calc(50% - 1rem); /* Adjust this as needed */
+  flex-basis: calc(50% - 1rem); 
   box-sizing: border-box;
+}
+.search {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {
   .card {
-    flex-basis: calc(25% - 1.5rem); /* Adjust this as needed */
+    flex-basis: calc(25% - 1.5rem); 
   }
 }
+@media (max-width: 768px) {
+  .search {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+
+/* Show Page */
 
 
 .Stock-Logo {
@@ -86,28 +101,30 @@ code {
   }
 }
 
+/* Portfolio Page */
+
 .card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
-.search {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
+
 
 .portfolio-container {
   background-color: whitesmoke;
   min-height: '100vh';
 }
 
+/* Home page */
+
+
 .home-body{
   background-color: #4a4a4a;
 }
 
-@media (max-width: 768px) {
-  .search {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+.home-cards{
+  background-color: #4a4a4a;;
+}
+.home-card-body {
+  background-color: #4a4a4a;
 }

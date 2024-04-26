@@ -20,10 +20,10 @@ const Home = () => {
       <h1>WallStreet</h1>
       <div className='home-body'> Welcome to Wallstreet ! </div>
       <div style={{ display: 'flex' }}>
-        <div style={{ flex: '1' }}>
+        <div style={{ flex: '0' }}>
           {/* Content on the left side (if any) */}
         </div>
-        <div style={{ flex: '1' }}>
+        <div className='home-cards' style={{ flex: '1' }}>
           <h2 style={{ textAlign: 'center' }}>News</h2>
           {news ? (
             <>
@@ -33,8 +33,8 @@ const Home = () => {
                   src={news.imageGen}
                   style={{ width: '300px', height: '150px', objectFit: 'contain' }}
                 />
-                <Card.Body>
-                  <Card.Title>{news.headlineGen}</Card.Title>
+                <Card.Body className='home-card-body'>
+                  <Card.Title >{news.headlineGen}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
                     Source: {news.sourceGen}
                   </Card.Subtitle>
@@ -50,7 +50,7 @@ const Home = () => {
                   src={news.imageMerge}
                   style={{ width: '300px', height: '150px', objectFit: 'contain' }}
                 />
-                <Card.Body>
+                <Card.Body className='home-card-body'>
                   <Card.Title>{news.headlineMerge}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
                     Source: {news.sourceMerge}

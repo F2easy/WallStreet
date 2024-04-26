@@ -39,7 +39,7 @@ const Index = () => {
             {stocks.filter((stock) => {
               return search.trim() === '' ? stock : stock.description.toLowerCase().includes(search.toLowerCase())
             }).map((stock) => (
-              <div key={stock.symbol} className="card" style={{ backgroundColor: '#DEDEDE'}}>
+              <div key={stock.symbol} className="card" style={{ backgroundColor: 'a3a3a3'}}>
                 <Link to={`/stocks/${stock.symbol}`} className="card-name">
                   {stock.symbol}
                 </Link>
