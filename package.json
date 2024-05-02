@@ -16,7 +16,8 @@
     "react-scripts": "^5.0.1",
     "sass": "^1.44.0",
     "uuid": "^8.3.2",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "babel": "@babel/plugin-proposal-private-property-in-object"
   },
   "scripts": {
     "start": "react-scripts start",

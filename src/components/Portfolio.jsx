@@ -24,38 +24,34 @@ const Portfolio = ({user}) => {
       });
   }, []);
 
-  const handleEditPortfolio = () => {
+
     
 
-    editPortfolio(user, portfolio._id,newName)
+
+  const handleEditPortfolio = () => {
+    editPortfolio(user, portfolio._id, newName)
       .then((e) => {
-        console.log("this is e", e)
-              // Update the local state with the new name
-    //  const updatedPortfolio = { ...portfolio, portName: newName };
-      setPortfolio(prevPortfolio => ({ ...prevPortfolio, portName: newName}));
-      // Reset the input field
-     // setNewName('');
-      console.log('portfolio ID is', portfolio._id);
-   
-         setPortfolio({ ...portfolio, portName: newName });
-      
+        setPortfolio(prevPortfolio => ({ ...prevPortfolio, portName: newName }));
         console.log('Portfolio name updated successfully!');
-      
       })
       .catch((error) => {
-        // Handle error, e.g., show an error message
         console.error('Failed to update portfolio name:', error);
       });
   };
 
   const handleRemoveStock = (stock) => {
-
-    removeStock(user,stock._id,portfolio._id)
-    
-  
-  }
-
-
+    removeStock(user, stock._id, portfolio._id)
+      .then(() => {
+        setPortfolio(prevPortfolio => ({
+          ...prevPortfolio,
+          stockList: prevPortfolio.stockList.filter(item => item._id !== stock._id)
+        }));
+        console.log('Stock removed successfully!');
+      })
+      .catch((error) => {
+        console.error('Failed to remove stock:', error);
+      });
+  };
 
   return (
     <>

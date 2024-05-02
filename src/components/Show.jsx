@@ -1,14 +1,23 @@
 import { useState, useEffect } from 'react';
-import { getAllStocks, showStock } from '../api/portfolio';
+import { showStock } from '../api/portfolio';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import apiUrl from '../apiConfig';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import messages from '../components/shared/AutoDismissAlert/messages'
 
 const Show = ({ user }) => {
   const [stock, setStock] = useState(null);
   const { symbol } = useParams();
+  const [alert, setAlert] = useState(null)
+  // const showAlert = (heading, message, variant) => {
+  //   setAlert({ heading, message, variant });
+  // };
+
+  // const dismissAlert = () => {
+  //   setAlert(null);
+  // };
 
   useEffect(() => {
     showStock(symbol)
@@ -21,10 +30,18 @@ const Show = ({ user }) => {
   }, [symbol]);
 
   const handleClick = () => {
+    //  const { msgAlert, setUser } = props
     console.log('user', user._id);
     console.log('stock:', stock);
-    return axios.patch(`${apiUrl}/portfolio/${user._id}`, stock);
-  };
+    return axios.patch(`${apiUrl}/portfolio/${user._id}`, stock)
+    // .then(() =>
+		// 		msgAlert({
+		// 			heading: 'Sign In Success',
+		// 			message: messages.signInSuccess,
+		// 			variant: 'success',
+		// 		})
+		// 	);
+   };
 
   return (
     <>
