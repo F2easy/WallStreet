@@ -5,11 +5,36 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import apiUrl from '../apiConfig';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import {Bar,Line} from 'react-chartjs-2'
 import messages from '../components/shared/AutoDismissAlert/messages'
+import {
+Chart as ChartJS,
+CategoryScale,
+LinearScale,
+LineElement,
+BarElement,
+Title,
+Tooltip,
+PointElement,
+Legend
+} from 'chart.js'
+
+ChartJS.register(
+CategoryScale,
+LinearScale,
+LineElement,
+BarElement,
+PointElement,
+
+Title,
+Tooltip,
+Legend
+)
 
 const Show = ({ user }) => {
   const [stock, setStock] = useState(null);
   const { symbol } = useParams();
+  const [loading, setLoading] = useState(true)
   const [alert, setAlert] = useState(null)
   // const showAlert = (heading, message, variant) => {
   //   setAlert({ heading, message, variant });
@@ -19,17 +44,22 @@ const Show = ({ user }) => {
   //   setAlert(null);
   // };
 
+
+  console.log('this is stock',stock)
   useEffect(() => {
+    setLoading(true)
+
     showStock(symbol)
       .then(res => {
         setStock(res.data.stock);
+        setLoading(false)
       })
       .catch(error => {
         console.log('Error fetching stock:', error);
       });
   }, [symbol]);
 
-  const handleClick = () => {
+  const handleClick = (messages) => {
     //  const { msgAlert, setUser } = props
     console.log('user', user._id);
     console.log('stock:', stock);
@@ -42,16 +72,112 @@ const Show = ({ user }) => {
 		// 		})
 		// 	);
    };
+   
+  /// Line Chart for trends
 
-  return (
-    <>
-      <h2>Stock Details</h2>
-      {stock ? (
+
+  const labels1 = ['Current-Price', 'Lowest-Price', 'Highest-Price', 'Prev-Close', 'Open-Price'];
+  const data1 = {
+    labels: labels1,
+    datasets: [{
+      label: 'Trends for stock',
+      data: [
+        stock?.currentPrice || 0, 
+        stock?.lowPrice || 0, 
+        stock?.highPrice || 0, 
+        stock?.prevClose || 0, 
+        stock?.openPrice || 0
+      ],
+      fill: true,
+      borderColor: 'light-green',
+      tension: 0.1
+    }]
+  };
+
+ 
+  const config = {
+    type: 'line',
+    data: data1,
+  };
+
+// Bar Chart for reccomendations
+
+   const labels = [stock?.recPeriod3, stock?.recPeriod2, stock?.recPeriod1, stock?.recPeriod] ;
+   const data = {
+     labels: labels,
+     datasets: [{ 
+      label: 'Strong-Buy', 
+      backgroundColor: "blue", 
+      data: [stock?.recStrongBuy3 || 0,stock?.recStrongBuy2 || 0,stock?.recStrongBuy1 || 0,stock?.recStrongBuy || 0], 
+  },{ 
+    label: 'Buy', 
+    backgroundColor: "green", 
+    data: [ stock?.recBuy3 || 0, stock?.recBuy2 || 0, stock?.recBuy1 || 0, stock?.recBuy || 0], 
+},
+   { 
+      label: 'Hold', 
+      backgroundColor: "yellow", 
+      data: [stock?.recHold3|| 0, stock?.recHold2|| 0, stock?.recHold1|| 0, stock?.recHold|| 0], 
+  }, { 
+      label: 'Sell', 
+      backgroundColor: "red", 
+      data: [stock?.recSell3 || 0,stock?.recSell2 || 0,stock?.recSell1 || 0,stock?.recSell || 0], 
+  },
+  { 
+    label: 'Strong-Sell', 
+    backgroundColor: "red", 
+    data: [stock?.recStrongSell3||0, stock?.recStrongSell2|| 0,stock?.recStrongSell1|| 0,stock?.recStrongSell|| 0], 
+}], 
+}
+ 
+  const options = {
+
+    responsive: true,
+    legend: {
+       position: 'center' // place legend on the center of chart
+    },
+
+    scales: {
+      x: {
+        beginAtZero: true,
+        stacked: true
+      },
+      y: {
+        beginAtZero: true,
+        stacked: true,
+      }
+    },
+    };
+  
+
+
+    
+
+    return (
+      <>
+        {loading ? (
+          <p>Loading...</p>
+        ) : stock ? (
+      
         
         <Row>
-          <div>
-
-          </div>
+           <div>
+        
+        </div>
+        <Col md={3}>
+            <Card className="line-chart">
+              <Card.Body>
+                <Line data={data1} options={config} />
+              </Card.Body>
+            </Card>
+          </Col>
+        <Col md={5}>
+            <Card className="bar-chart">
+              <Card.Body>
+                <Bar data={data} options={options} />
+              </Card.Body>
+            </Card>
+          </Col>
            <Col md={3}>
             <Card className='prices'>
               <Card.Body>

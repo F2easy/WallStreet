@@ -7,17 +7,19 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^1.6.7",
+    "babel": "@babel/plugin-proposal-private-property-in-object",
     "bootstrap": "^5.1.3",
+    "chart.js": "^4.4.2",
     "dotenv": "^8.2.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.44.0",
     "uuid": "^8.3.2",
-    "web-vitals": "^1.1.2",
-    "babel": "@babel/plugin-proposal-private-property-in-object"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
