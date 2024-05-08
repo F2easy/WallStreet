@@ -28,7 +28,7 @@ PointElement,
 
 Title,
 Tooltip,
-Legend
+Legend,
 )
 
 const Show = ({ user }) => {
@@ -76,20 +76,21 @@ const Show = ({ user }) => {
   /// Line Chart for trends
 
 
-  const labels1 = ['Current-Price', 'Lowest-Price', 'Highest-Price', 'Prev-Close', 'Open-Price'];
+  const labels1 = [ 'Prev-Close', 'Open-Price','Current-Price', 'Lowest-Price', 'Highest-Price'];
   const data1 = {
     labels: labels1,
     datasets: [{
-      label: 'Trends for stock',
+      label: 'Stock Activity For The Day',
       data: [
+        stock?.prevClose || 0, 
+        stock?.openPrice || 0,
         stock?.currentPrice || 0, 
         stock?.lowPrice || 0, 
-        stock?.highPrice || 0, 
-        stock?.prevClose || 0, 
-        stock?.openPrice || 0
+        stock?.highPrice || 0,
+    
       ],
       fill: true,
-      borderColor: 'light-green',
+      borderColor: 'green',
       tension: 0.1
     }]
   };
@@ -107,47 +108,55 @@ const Show = ({ user }) => {
      labels: labels,
      datasets: [{ 
       label: 'Strong-Buy', 
-      backgroundColor: "blue", 
+      backgroundColor: "#10722a", 
       data: [stock?.recStrongBuy3 || 0,stock?.recStrongBuy2 || 0,stock?.recStrongBuy1 || 0,stock?.recStrongBuy || 0], 
   },{ 
     label: 'Buy', 
-    backgroundColor: "green", 
+    backgroundColor: "#1db233", 
     data: [ stock?.recBuy3 || 0, stock?.recBuy2 || 0, stock?.recBuy1 || 0, stock?.recBuy || 0], 
 },
    { 
       label: 'Hold', 
-      backgroundColor: "yellow", 
+      backgroundColor: "#f7b538", 
       data: [stock?.recHold3|| 0, stock?.recHold2|| 0, stock?.recHold1|| 0, stock?.recHold|| 0], 
   }, { 
       label: 'Sell', 
-      backgroundColor: "red", 
+      backgroundColor: "#e85d04", 
       data: [stock?.recSell3 || 0,stock?.recSell2 || 0,stock?.recSell1 || 0,stock?.recSell || 0], 
   },
   { 
     label: 'Strong-Sell', 
-    backgroundColor: "red", 
+    backgroundColor: "#d00000", 
     data: [stock?.recStrongSell3||0, stock?.recStrongSell2|| 0,stock?.recStrongSell1|| 0,stock?.recStrongSell|| 0], 
 }], 
 }
+
+// topLables plugin
+// const topLabels = {
+//   id: 'topLabels',
+//   afterDataSetsDraw(chart, args, pl)
+// }
  
-  const options = {
-
-    responsive: true,
-    legend: {
-       position: 'center' // place legend on the center of chart
-    },
-
-    scales: {
-      x: {
-        beginAtZero: true,
-        stacked: true
+const options = {
+  responsive: true,
+  legend: {
+    position: 'center', // Place legend in the center of the chart
+  },
+  scales: {
+    x: {
+      beginAtZero: true,
+      stacked: true,
+      scaleLabel: {
+        display: true,
+        labelString: 'Analyst Votes',
       },
-      y: {
-        beginAtZero: true,
-        stacked: true,
-      }
     },
-    };
+    y: {
+      beginAtZero: true,
+      stacked: true,
+    },
+  },
+};
   
 
 
